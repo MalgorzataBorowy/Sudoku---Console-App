@@ -107,7 +107,7 @@ namespace SudokuApp
                             return false;
                         }
                         cos++;
-                        if (cos == 6)
+                        if (cos == 6) //ile kwadratów jest wypełnionych (6 to wszystkie)
                             return true;
                     }  
                 }
@@ -115,15 +115,16 @@ namespace SudokuApp
             return true;
         }
 
-        public void generateSudoku()
+        public bool generateSudoku()
         {
             bool flag = generateNonDiagonal();
             while(!flag)
             {
                 fillWithZeros();
                 flag = generateNonDiagonal();
-                printSudoku();
+                //printSudoku();
             }
+            return flag;
         }
 
         public void printSudoku()
@@ -148,6 +149,21 @@ namespace SudokuApp
                     Console.WriteLine("|\n");
                 }                  
             }
+        }
+
+        public void saveToFile(string path)
+        {
+            string[] lines = new string[size+1];
+            lines[0] = string.Empty;
+            for (int i = 0; i < size; i++)
+            {
+                for(int j=0; j<size; j++)
+                {
+                    lines[i+1] += $"{matrix[i,j]} ";
+                }                
+            }
+
+            System.IO.File.AppendAllLines(path, lines);
         }
 
     }

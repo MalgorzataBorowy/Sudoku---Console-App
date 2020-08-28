@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SudokuApp
 {
@@ -6,10 +7,17 @@ namespace SudokuApp
     {
         static void Main(string[] args)
         {
+            List<SudokuGame> sudokus = new List<SudokuGame>();
+            string path = @"C:\Users\skobr\Desktop\sudokus.txt";
+            while(sudokus.Count<5)
 
-            SudokuGame game1 = new SudokuGame();
-            game1.generateSudoku();
-            game1.printSudoku();
+            {
+                SudokuGame game = new SudokuGame();                
+                game.generateSudoku();
+                game.printSudoku();
+                game.saveToFile(path);
+                sudokus.Add(game);
+            }
         }
     }
 }
