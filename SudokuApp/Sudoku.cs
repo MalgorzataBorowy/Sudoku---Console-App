@@ -4,10 +4,15 @@ using System.Text;
 
 namespace SudokuApp
 {
-    class SudokuGame
+    class Sudoku
     {
         private const int size = 9;
-        int[,] matrix = new int[size,size];
+        int[,] matrix;
+
+        public Sudoku()
+        {
+            matrix = new int[size, size];
+        }
 
         private int generateRandom()
         {
@@ -54,12 +59,10 @@ namespace SudokuApp
                 for(int j=r-1; j<r+2; j++)
                 {
                     List<int> table = new List<int>();
-                    //int count = 0;
                     int rnd = generateRandom();
                     while( !( checkSquare(rnd,k-1,r-1) && (checkRow(rnd,i)) && checkColumn(rnd,j) ) )
                     {
                         rnd = generateRandom();
-                        //count++;
                         if(!table.Contains(rnd))
                         {
                             table.Add(rnd);
@@ -68,9 +71,6 @@ namespace SudokuApp
                             return false;
                     }
                     matrix[i, j] = rnd;
-                    /*foreach(int item in table)
-                        Console.Write($"{item} ");
-                    printSudoku();*/
                 }
             }
             return true;
@@ -125,6 +125,11 @@ namespace SudokuApp
                 //printSudoku();
             }
             return flag;
+        }
+
+        public void SetMatrix(int[,] matrix)
+        {
+            this.matrix = matrix;
         }
 
         public void printSudoku()

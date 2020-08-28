@@ -7,17 +7,20 @@ namespace SudokuApp
     {
         static void Main(string[] args)
         {
-            List<SudokuGame> sudokus = new List<SudokuGame>();
+            /*List<Sudoku> sudokus = new List<Sudoku>();
             string path = @"C:\Users\skobr\Desktop\sudokus.txt";
-            while(sudokus.Count<5)
+            while(sudokus.Count<1)
 
             {
-                SudokuGame game = new SudokuGame();                
+                Sudoku game = new Sudoku();                
                 game.generateSudoku();
                 game.printSudoku();
                 game.saveToFile(path);
                 sudokus.Add(game);
-            }
+            }*/
+            string path = @"C:\Users\skobr\Desktop\sudokus.txt";
+            SudokuGames games = new SudokuGames();
+            games.readFromFile(path);
         }
     }
 }
