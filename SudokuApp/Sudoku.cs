@@ -7,7 +7,7 @@ namespace SudokuApp
     class Sudoku
     {
         private const int size = 9;
-        int[,] matrix;
+        private int[,] matrix;
 
         public Sudoku()
         {
@@ -129,7 +129,8 @@ namespace SudokuApp
 
         public void SetMatrix(int[,] matrix)
         {
-            this.matrix = matrix;
+            if(matrix.GetLength(0)==size && matrix.GetLength(1)==size)
+                this.matrix = matrix;
         }
 
         public void printSudoku()

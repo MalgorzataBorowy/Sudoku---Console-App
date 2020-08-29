@@ -13,6 +13,20 @@ namespace SudokuApp
             games = new List<Sudoku>();
         }
 
+        public void generateNSudokus(int n, string path)
+        {
+            int count = 0;
+            while (count < n)
+            {
+                Sudoku game = new Sudoku();
+                game.generateSudoku();
+                game.printSudoku();
+                game.saveToFile(path);
+                games.Add(game);
+                count++;
+            }
+        }
+
         public void readFromFile(string path)
         {
             string text = System.IO.File.ReadAllText(path, Encoding.UTF8);
