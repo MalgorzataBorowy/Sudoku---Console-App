@@ -6,7 +6,7 @@ namespace SudokuApp
 {
     class SudokuGames
     {
-        private List<Sudoku> games;
+        public List<Sudoku> games;
 
         public SudokuGames()
         {
@@ -41,7 +41,7 @@ namespace SudokuApp
                     for (int j = 0; j < 9; j++)
                         matrix[i, j] = Int32.Parse(text[count++].ToString());
                 }
-                games[a].SetMatrix(matrix);
+                games[a].setMatrix(matrix);
                 games[a].printSudoku();
             }            
         }

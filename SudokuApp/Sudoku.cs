@@ -127,7 +127,21 @@ namespace SudokuApp
             return flag;
         }
 
-        public void SetMatrix(int[,] matrix)
+        public void fillWithBlanks(int n)
+        {
+            while (n > 0)
+            {
+                int i = generateRandom()-1;
+                int j = generateRandom()-1;
+                if(matrix[i,j] != 0)
+                {
+                    matrix[i, j] = 0;
+                    n--;
+                }
+            }              
+        }
+
+        public void setMatrix(int[,] matrix)
         {
             if(matrix.GetLength(0)==size && matrix.GetLength(1)==size)
                 this.matrix = matrix;
