@@ -7,11 +7,27 @@ namespace SudokuApp
     {
         static void Main(string[] args)
         {
-            SudokuGames games = new SudokuGames();
-            string path = @"C:\Users\skobr\Desktop\sudokus.txt";
-            games.generateNSudokus(4, path);
+            SudokuPuzzle puzzle = new SudokuPuzzle();
+            puzzle.generateGame(20);
+            bool unsolved = true;
 
-            //games.readFromFile(path);
+            while(unsolved)
+            { 
+                Console.WriteLine("Make a guess: Enter row number: ");
+                int x = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Enter column number: ");
+                int y = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Enter value: ");
+                int value = Int32.Parse(Console.ReadLine());
+
+                puzzle.makeGuess(x, y, value);
+                puzzle.printSudoku();
+                unsolved = !puzzle.checkPuzzle();
+            }
+            if (!unsolved)
+            {
+                Console.WriteLine("Puzzle solved");
+            }
         }
     }
 }
