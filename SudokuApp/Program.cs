@@ -8,35 +8,26 @@ namespace SudokuApp
         static void Main(string[] args)
         {
             SudokuPuzzle puzzle = new SudokuPuzzle();
-            puzzle.generateGame(30);
+            puzzle.generateGame(20);
+            bool unsolved = true;
 
-            while(true)
+            while(unsolved)
             { 
-                Console.WriteLine("Make a guess: Enter x: ");
+                Console.WriteLine("Make a guess: Enter row number: ");
                 int x = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Enter y: ");
+                Console.WriteLine("Enter column number: ");
                 int y = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("Enter value: ");
                 int value = Int32.Parse(Console.ReadLine());
 
                 puzzle.makeGuess(x, y, value);
-                puzzle.printSudoku();   
+                puzzle.printSudoku();
+                unsolved = !puzzle.checkPuzzle();
             }
-
-            /*Sudoku sudoku = new Sudoku();
-            sudoku.generateSudoku();
-            sudoku.printSudoku();
-            sudoku.fillWithBlanks(55);
-            sudoku.printSudoku();*/
-
-
-            //SudokuGames games = new SudokuGames();
-            //string path = @"C:\Users\skobr\Desktop\sudokus.txt";
-            //games.generateNSudokus(4, path);
-
-            //games.readFromFile(path);
-            //games.games[0].fillWithBlanks(50);
-            //games.games[0].printSudoku();
+            if (!unsolved)
+            {
+                Console.WriteLine("Puzzle solved");
+            }
         }
     }
 }
