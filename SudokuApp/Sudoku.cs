@@ -6,15 +6,16 @@ namespace SudokuApp
 {
     class Sudoku
     {
-        private const int size = 9;
-        private int[,] matrix;
+        protected const int size = 9;
+        protected int[,] matrix;
+
 
         public Sudoku()
         {
             matrix = new int[size, size];
         }
-
-        private int generateRandom()
+        
+        protected int generateRandom()
         {
             Random rnd = new Random();
             return rnd.Next(1,10);
@@ -127,29 +128,14 @@ namespace SudokuApp
             return flag;
         }
 
-        public void fillWithBlanks(int n)
-        {
-            while (n > 0)
-            {
-                int i = generateRandom()-1;
-                int j = generateRandom()-1;
-                if(matrix[i,j] != 0)
-                {
-                    matrix[i, j] = 0;
-                    n--;
-                }
-            }              
-        }
-
         public void setMatrix(int[,] matrix)
         {
             if(matrix.GetLength(0)==size && matrix.GetLength(1)==size)
                 this.matrix = matrix;
         }
 
-        public void printSudoku()
+        public virtual void printSudoku()
         {
-
             for(int i=0; i<size+1; i++)
             {
                 if((i+3)%3==0)

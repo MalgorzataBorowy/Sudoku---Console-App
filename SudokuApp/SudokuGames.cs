@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SudokuApp
 {
-    class SudokuGames
+    class SudokuGames : Sudoku
     {
         public List<Sudoku> games;
 
