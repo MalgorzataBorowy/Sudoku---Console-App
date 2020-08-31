@@ -8,8 +8,11 @@ namespace SudokuApp
         static void Main(string[] args)
         {
             SudokuPuzzle puzzle = new SudokuPuzzle();
-            puzzle.generateGame(20);
-            bool unsolved = true;
+            puzzle.generateGame(30);
+            bool solved = puzzle.solvePuzzle();
+            puzzle.printSudoku();
+
+            /*bool unsolved = true;
 
             while(unsolved)
             { 
@@ -27,7 +30,7 @@ namespace SudokuApp
             if (!unsolved)
             {
                 Console.WriteLine("Puzzle solved");
-            }
+            }*/
         }
     }
 }
