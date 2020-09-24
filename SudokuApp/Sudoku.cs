@@ -7,7 +7,7 @@ namespace SudokuApp
     class Sudoku
     {
         protected const int size = 9;
-        protected int[,] matrix;
+        protected int[,] matrix;        //matrix for a fully filled sudoku
 
 
         public Sudoku()
@@ -15,13 +15,13 @@ namespace SudokuApp
             matrix = new int[size, size];
         }
         
-        protected int generateRandom()
+        protected int generateRandom()  // generates random number from 1 to 9
         {
             Random rnd = new Random();
             return rnd.Next(1,10);
         }
 
-        private bool checkSquare(int value, int k, int r)
+        private bool checkSquare(int value, int k, int r)   //checks if value is already placed in a given square
         {
             for(int i=k; i<k+3; i++)
             {

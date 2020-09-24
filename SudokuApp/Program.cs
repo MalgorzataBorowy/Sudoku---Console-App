@@ -8,7 +8,7 @@ namespace SudokuApp
         static void Main(string[] args)
         {
             SudokuPuzzle puzzle = new SudokuPuzzle();
-            puzzle.generateGame(30);
+            puzzle.generateGame(5);
             bool solved = puzzle.solvePuzzle();
             puzzle.printSudoku();
 
